@@ -1198,8 +1198,7 @@ abstract class CoreStore extends Service {
     return promise.then(
       payload => {
         // ensure that regardless of id returned we assign to the correct record
-        // for polymorphic, if type does not match, we'll need a new identifier
-        if (payload.data && !Array.isArray(payload.data) && payload.data.type === identifier.type) {
+        if (payload.data && !Array.isArray(payload.data)) {
           payload.data.lid = identifier.lid;
         }
 

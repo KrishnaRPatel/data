@@ -345,7 +345,11 @@ export class IdentifierCache {
 
     if (!existingIdentifier) {
       if (identifier.type !== data.type && data.type) {
-        existingIdentifier = this.getOrCreateRecordIdentifier({type: data.type, id: data.id, attributes: data.attributes});
+        existingIdentifier = this.getOrCreateRecordIdentifier({
+          type: data.type,
+          id: data.id,
+          attributes: data.attributes,
+        });
       }
     }
 
@@ -378,7 +382,6 @@ export class IdentifierCache {
     data: ResourceIdentifierObject | ExistingResourceObject,
     newId: string
   ): StableRecordIdentifier {
-    debugger
     // delegate determining which identifier to keep to the configured MergeMethod
     let kept = this._merge(identifier, existingIdentifier, data);
     let abandoned = kept === identifier ? existingIdentifier : identifier;
@@ -564,7 +567,6 @@ function detectMerge(
       return existingIdentifier !== undefined ? existingIdentifier : false;
       // If the lids are the same, and ids are the same, but types are different we should trigger a merge of the identifiers
     } else if (id !== null && id === newId && newType && newType !== type && data.lid && data.lid === lid) {
-      debugger
       let keyOptions = getTypeIndex(typesCache, newType);
       let existingIdentifier = keyOptions.id[id];
       return existingIdentifier !== undefined ? existingIdentifier : false;

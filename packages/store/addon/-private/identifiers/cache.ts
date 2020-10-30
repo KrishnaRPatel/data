@@ -347,8 +347,7 @@ export class IdentifierCache {
       if (identifier.type !== data.type && data.type) {
         existingIdentifier = this.getOrCreateRecordIdentifier({
           type: data.type,
-          id: data.id,
-          attributes: data.attributes,
+          id: data.id as string,
         });
       }
     }

@@ -244,7 +244,7 @@ const hasJQuery = typeof jQuery !== 'undefined';
         'API_KEY': 'secret key',
         'ANOTHER_HEADER': 'Some header value'
       };
-    }
+    })
   });
   ```
 
